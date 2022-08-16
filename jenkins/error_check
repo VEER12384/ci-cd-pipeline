@@ -1,0 +1,37 @@
+boolean isBuild=false
+pipeline{
+    agent any 
+
+    stages{
+        stage('A'){
+            steps{
+           catchError( buildResult ='SUCCESS', stageResult='FAILURE'){
+            echo 'Stage A is running'
+            isBuild = true
+      }
+        }
+        } 
+
+        stage('B'){
+            when {
+                expression {
+                    isBuild == true
+                }
+            }
+            steps{
+                echo 'Stage B is running'
+            }
+        } 
+
+        stage('C'){
+            when {
+                expression {
+                    isBuild == false
+                }
+            }
+            steps{
+                echo 'Stage C is running'
+            }
+        }
+    }
+}
