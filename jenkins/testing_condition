@@ -1,0 +1,38 @@
+boolean isBuild=true
+pipeline{
+    agent any
+
+    stages{
+        stage('A'){
+            steps{
+            script{
+                     try{
+                        echo 'Stage A is Running'
+                        // sh 'exit 1'
+                        }
+                  }
+        }
+        }
+
+        stage('B'){
+            when {
+                expression {
+                    isBuild == true
+                }
+            }
+            steps{
+                echo 'Stage B is running'
+            }
+        }
+
+        stage('C'){
+            when {
+                expression {
+                    isBuild == false
+                }
+            }
+            steps{
+                echo 'Stage C is running'
+            }
+        }
+    }
