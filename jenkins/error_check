@@ -1,7 +1,7 @@
 boolean isBuild=false
 pipeline{
-    agent any 
-
+    agent any
+    
     stages{
         stage('A'){
             steps{
