@@ -9,8 +9,6 @@ pipeline
         sh "echo this is the deploy stage"
         }
         }
-        stage ('test')
-        {
         
                stage('testing1')
         {
@@ -29,7 +27,6 @@ stage ('testing2')
 steps
 {
     sh "echo this is testing 2 stage"
-}
 }
 }
 }
