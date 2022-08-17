@@ -5,9 +5,11 @@ pipeline{
       stages{
         stage('A'){
           steps{
-              catchError( buildStatus='SUCCESS, stageStatus='FAILURE'){
-              echo 'Stage A is running'
+              catchError( buildStatus='SUCCESS, stageStatus='FAILURE')
+              { sh '''
+              echo "Stage A is running"
               isBuild = true
+              '''
         }
         }
         } 
